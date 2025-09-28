@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 
 public class ModItemGroups {
-    public static final ItemGroup WEAPOMS_OF_WAR = FabricItemGroup.builder()
+    public static final ItemGroup WEAPONS_OF_WAR = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ModItems.M12213_LONGSWORD))
             .displayName(Text.translatable("itemGroup.wowmod.weapons_of_war"))
             .entries((context, entries) -> {
@@ -21,6 +21,6 @@ public class ModItemGroups {
 
     public static void initialize() {
         // Since 1.21:
-        Registry.register(Registries.ITEM_GROUP, Identifier.of("wowmod", "weapons_of_war"), WEAPOMS_OF_WAR);
+        Registry.register(Registries.ITEM_GROUP, Identifier.of("wowmod", "weapons_of_war"), WEAPONS_OF_WAR);
     }
 }

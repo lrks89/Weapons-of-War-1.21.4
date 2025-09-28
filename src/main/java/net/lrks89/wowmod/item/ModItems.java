@@ -33,6 +33,6 @@ public class ModItems {
 
     public static void  registerModItems(){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS). register(ModItems::customModIngredients);
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT). register(ModItems::customModIngredients);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT). register(ModItems::customModWeapons);
     }
 }
