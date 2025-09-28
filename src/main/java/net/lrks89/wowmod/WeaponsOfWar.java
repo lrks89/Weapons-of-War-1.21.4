@@ -2,6 +2,7 @@ package net.lrks89.wowmod;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.lrks89.wowmod.item.ModItemGroups;
 import net.lrks89.wowmod.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,8 @@ public class WeaponsOfWar implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+        ModItemGroups.initialize();
+
         ModItems.registerModItems();
 	}
 }
