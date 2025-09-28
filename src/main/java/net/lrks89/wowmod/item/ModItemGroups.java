@@ -1,7 +1,6 @@
 package net.lrks89.wowmod.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.lrks89.wowmod.WeaponsOfWar;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;

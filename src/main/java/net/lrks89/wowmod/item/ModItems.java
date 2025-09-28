@@ -23,13 +23,16 @@ public class ModItems {
         return Items.register(registerKey, factory, settings);
     }
 
-    private static void customIngredients(FabricItemGroupEntries entries) {
+    private static void customModIngredients(FabricItemGroupEntries entries) {
+    }
+    private static void customModWeapons(FabricItemGroupEntries entries) {
         entries.add(M12113_SHORTSWORD);
         entries.add(M12213_LONGSWORD);
         entries.add(M12313_GREATSWORD);
     }
 
     public static void  registerModItems(){
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS). register(ModItems::customIngredients);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS). register(ModItems::customModIngredients);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT). register(ModItems::customModIngredients);
     }
 }
