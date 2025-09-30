@@ -11,12 +11,11 @@ import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
     public static final ItemGroup WEAPONS_OF_WAR = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ModItems.M12213_LONGSWORD))
+            .icon(() -> new ItemStack(ModItems.M12113_SHORTSWORD))
             .displayName(Text.translatable("itemGroup.wowmod.weapons_of_war"))
             .entries((context, entries) -> {
                         entries.add(ModItems.M12113_SHORTSWORD);
-                        entries.add(ModItems.M12213_LONGSWORD);
-                        entries.add(ModItems.M12313_GREATSWORD);
+
                     }).build();
 
     public static void initialize() {
