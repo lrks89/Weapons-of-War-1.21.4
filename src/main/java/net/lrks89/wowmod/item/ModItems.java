@@ -20,8 +20,6 @@ public class ModItems {
     public static final Item M12113_SHORTSWORD = registerItem("m12113_shortsword",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
 
-
-
     private static void customModIngredients(FabricItemGroupEntries entries) {
     }
     private static void customModWeapons(FabricItemGroupEntries entries) {

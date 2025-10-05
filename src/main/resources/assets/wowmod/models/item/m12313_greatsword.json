@@ -1,6 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "wowmod:item/m12313_greatsword"
-  }
-}
