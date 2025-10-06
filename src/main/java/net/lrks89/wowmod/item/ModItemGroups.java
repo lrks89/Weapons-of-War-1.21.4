@@ -73,6 +73,15 @@ public class ModItemGroups {
 
                         entries.add(ModItems.M35113_STAFF);
                         entries.add(ModItems.M35213_LUCERNE);
+
+                        //Unique Weapons
+                        entries.add(ModItems.M41113_CHAKRAM);
+                        entries.add(ModItems.M41213_SHURIKEN);
+                        entries.add(ModItems.M41313_BOOMERANG);
+
+                        entries.add(ModItems.M42113_TWINGLAIVE);
+                        entries.add(ModItems.M42213_TWINBLADE);
+                        entries.add(ModItems.M42313_BO);
                     }).build();
 
     public static void initialize() {

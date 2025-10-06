@@ -117,6 +117,21 @@ public class ModItems {
     public static final Item M35213_LUCERNE = registerItem("35213_lucerne",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
 
+    //Blugeoning Weapons
+    public static final Item M41113_CHAKRAM = registerItem("41113_chakram",
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+    public static final Item M41213_SHURIKEN = registerItem("41213_shuriken",
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+    public static final Item M41313_BOOMERANG = registerItem("41313_boomerang",
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+
+    public static final Item M42113_TWINGLAIVE = registerItem("42113_twinglaive",
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+    public static final Item M42213_TWINBLADE = registerItem("42213_twinblade",
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+    public static final Item M42313_BO = registerItem("42313_bo",
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+
     private static void customModIngredients(FabricItemGroupEntries entries) {
     }
     private static void customModWeapons(FabricItemGroupEntries entries) {
@@ -180,7 +195,7 @@ public class ModItems {
         entries.add(M35113_STAFF);
         entries.add(M35213_LUCERNE);
 
-        //Bludgeoning Weapons
+        //Unique Weapons
         entries.add(M41113_CHAKRAM);
         entries.add(M41213_SHURIKEN);
         entries.add(M41313_BOOMERANG);
