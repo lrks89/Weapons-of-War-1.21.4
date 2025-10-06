@@ -1,37 +1,37 @@
 {
   "attributes": {
-    "range_bonus": 0,
-    "category": "sword",
+    "range_bonus": 1.5,
+    "two_handed": true,
+    "category": "staff",
     "attacks": [
       {
         "hitbox": "HORIZONTAL_PLANE",
-        "damage_multiplier": 1,
-        "angle": 120,
+        "damage_multiplier": 0.8,
+        "angle": 160,
         "upswing": 0.5,
-        "animation": "bettercombat:one_handed_slash_horizontal_right",
+        "animation": "bettercombat:two_handed_slash_horizontal_right",
         "swing_sound": {
-          "id": "bettercombat:sword_slash"
+          "id": "bettercombat:staff_slash"
         }
       },
       {
         "hitbox": "HORIZONTAL_PLANE",
         "damage_multiplier": 1,
-        "angle": 120,
+        "angle": 160,
         "upswing": 0.5,
-        "animation": "bettercombat:one_handed_slash_horizontal_left",
+        "animation": "bettercombat:two_handed_slash_horizontal_left",
         "swing_sound": {
-          "id": "bettercombat:sword_slash"
+          "id": "bettercombat:staff_slash"
         }
       },
       {
-        "hitbox": "FORWARD_BOX",
-        "damage_multiplier": 1,
-        "angle": 0,
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 1.2,
+        "angle": 120,
         "upswing": 0.5,
-        "animation": "bettercombat:one_handed_stab",
+        "animation": "bettercombat:two_handed_slam",
         "swing_sound": {
-          "id": "bettercombat:sword_slash",
-          "pitch": 1.2
+          "id": "bettercombat:staff_slam"
         }
       }
     ]

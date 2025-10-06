@@ -1,14 +1,16 @@
 {
   "attributes": {
     "range_bonus": 0,
-    "category": "sword",
+    "pose": "bettercombat:pose_two_handed_katana",
+    "two_handed": true,
+    "category": "twin_blade",
     "attacks": [
       {
         "hitbox": "HORIZONTAL_PLANE",
         "damage_multiplier": 1,
-        "angle": 120,
+        "angle": 150,
         "upswing": 0.5,
-        "animation": "bettercombat:one_handed_slash_horizontal_right",
+        "animation": "bettercombat:one_handed_slash_switch_blade_right",
         "swing_sound": {
           "id": "bettercombat:sword_slash"
         }
@@ -16,22 +18,11 @@
       {
         "hitbox": "HORIZONTAL_PLANE",
         "damage_multiplier": 1,
-        "angle": 120,
+        "angle": 150,
         "upswing": 0.5,
-        "animation": "bettercombat:one_handed_slash_horizontal_left",
+        "animation": "bettercombat:one_handed_slash_switch_blade_left",
         "swing_sound": {
           "id": "bettercombat:sword_slash"
-        }
-      },
-      {
-        "hitbox": "FORWARD_BOX",
-        "damage_multiplier": 1,
-        "angle": 0,
-        "upswing": 0.5,
-        "animation": "bettercombat:one_handed_stab",
-        "swing_sound": {
-          "id": "bettercombat:sword_slash",
-          "pitch": 1.2
         }
       }
     ]
