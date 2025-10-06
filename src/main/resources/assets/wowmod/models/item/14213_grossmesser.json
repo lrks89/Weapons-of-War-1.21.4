@@ -1326,12 +1326,12 @@
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [-10, 0, 0],
-			"translation": [0, 5.25, 1.25],
+			"translation": [0, 6.25, 1.25],
 			"scale": [1.6, 1.6, 1.6]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [-10, 0, 0],
-			"translation": [0, 5.25, 1.25],
+			"translation": [0, 6.25, 1.25],
 			"scale": [1.6, 1.6, 1.6]
 		},
 		"firstperson_righthand": {

@@ -1215,12 +1215,12 @@
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [-10, 0, 0],
-			"translation": [0, 3.75, 1.25],
+			"translation": [0, 4.75, 0.75],
 			"scale": [1.6, 1.6, 1.6]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [-10, 0, 0],
-			"translation": [0, 3.75, 1.25],
+			"translation": [0, 4.75, 0.75],
 			"scale": [1.6, 1.6, 1.6]
 		},
 		"firstperson_righthand": {

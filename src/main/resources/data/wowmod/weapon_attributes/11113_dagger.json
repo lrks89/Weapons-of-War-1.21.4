@@ -1,6 +1,6 @@
 {
   "attributes": {
-    "range_bonus": -0.5,
+    "range_bonus": -1,
     "two_handed": false,
     "category": "dagger",
     "attacks": [
@@ -20,6 +20,16 @@
         "angle": 150,
         "upswing": 0.5,
         "animation": "bettercombat:one_handed_slash_horizontal_left",
+        "swing_sound": {
+          "id": "bettercombat:dagger_slash"
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 0.9,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:one_handed_stab",
         "swing_sound": {
           "id": "bettercombat:dagger_slash"
         }

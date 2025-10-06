@@ -45,9 +45,9 @@ public class ModItems {
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
 
     public static final Item M15113_GLAIVE = registerItem("15113_glaive",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
     public static final Item M15213_NAGAMAKI = registerItem("15213_nagamaki",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
 
     //Piercing Weapons
     public static final Item M21113_CLAW = registerItem("21113_claw",
@@ -79,9 +79,9 @@ public class ModItems {
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
 
     public static final Item M25113_SPEAR = registerItem("25113_spear",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
     public static final Item M25213_HALBERD = registerItem("25213_halberd",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
 
     //Blugeoning Weapons
     public static final Item M31113_TONFA = registerItem("31113_tonfa",
@@ -113,17 +113,17 @@ public class ModItems {
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
 
     public static final Item M35113_STAFF = registerItem("35113_staff",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
     public static final Item M35213_LUCERNE = registerItem("35213_lucerne",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
 
     //Blugeoning Weapons
     public static final Item M41113_CHAKRAM = registerItem("41113_chakram",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -1.6f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -3.2f, setting));
     public static final Item M41213_SHURIKEN = registerItem("41213_shuriken",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -1.6f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -3.2f, setting));
     public static final Item M41313_BOOMERANG = registerItem("41313_boomerang",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -1.6f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -3.2f, setting));
 
     public static final Item M42113_TWINGLAIVE = registerItem("42113_twinglaive",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.0f, setting));

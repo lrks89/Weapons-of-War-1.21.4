@@ -1,7 +1,7 @@
 {
   "attributes": {
-    "range_bonus": 1,
-    "pose": "bettercombat:pose_two_handed_katana",
+    "range_bonus": 0.5,
+    "pose": "wowmod:pose_greatsword",
     "two_handed": true,
     "category": "katana",
     "attacks": [
