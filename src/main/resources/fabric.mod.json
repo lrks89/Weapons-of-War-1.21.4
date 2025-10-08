@@ -20,7 +20,10 @@
 		],
 		"fabric-datagen": [
 			"net.lrks89.wowmod.WeaponsOfWarDataGenerator"
-		]
+		],
+        "client": [
+          "net.lrks89.wowmod.WeaponsOfWarClient"
+        ]
 	},
 	"mixins": [
 		"wowmod.mixins.json"

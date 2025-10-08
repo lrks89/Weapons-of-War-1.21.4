@@ -1,6 +1,6 @@
 {
   "attributes": {
-    "range_bonus": -0.5,
+    "range_bonus": -1,
     "two_handed": false,
     "category": "dagger",
     "attacks": [

@@ -1,12 +1,13 @@
 {
   "attributes": {
-    "range_bonus": 0,
-    "two_handed": true,
+    "range_bonus": -1,
+    "two_handed": false,
     "category": "claymore",
     "attacks": [
       {
+        "conditions": ["NO_OFFHAND_ITEM"],
         "hitbox": "HORIZONTAL_PLANE",
-        "damage_multiplier": 0.75,
+        "damage_multiplier": 0.9,
         "angle": 150,
         "upswing": 0.5,
         "animation": "bettercombat:two_handed_slash_horizontal_right",
@@ -15,24 +16,68 @@
         }
       },
       {
+        "conditions": ["OFF_HAND_SHIELD"],
         "hitbox": "FORWARD_BOX",
-        "damage_multiplier": 1,
-        "angle": 0,
+        "damage_multiplier": 1.4,
+        "angle": 150,
         "upswing": 0.5,
-        "animation": "bettercombat:two_handed_slash_horizontal_left",
+        "animation": "bettercombat:one_handed_slash_horizontal_left",
         "swing_sound": {
           "id": "bettercombat:claymore_swing"
         }
       },
       {
-        "hitbox": "FORWARD_BOX",
-        "damage_multiplier": 1.25,
+        "conditions": ["NO_OFFHAND_ITEM"],
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 0.9,
         "angle": 150,
         "upswing": 0.5,
-        "animation": "bettercombat:two_handed_stab_left",
+        "animation": "bettercombat:two_handed_stab_right",
         "swing_sound": {
-          "id": "bettercombat:claymore_swing",
-          "randomness": 0
+          "id": "bettercombat:claymore_swing"
+        }
+      },
+      {
+        "conditions": ["OFF_HAND_SHIELD"],
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1.4,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:one_handed_slash_horizontal_right",
+        "swing_sound": {
+          "id": "bettercombat:claymore_swing"
+        }
+      },
+      {
+        "conditions": ["NO_OFFHAND_ITEM"],
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 0.9,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_horizontal_left",
+        "swing_sound": {
+          "id": "bettercombat:claymore_swing"        }
+      },
+      {
+        "conditions": ["DUAL_WIELDING_ANY","MAIN_HAND_ONLY"],
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1.4,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:dual_handed_slash_cross",
+        "swing_sound": {
+          "id": "bettercombat:claymore_swing"
+        }
+      },
+      {
+        "conditions": ["DUAL_WIELDING_ANY","MAIN_HAND_ONLY"],
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1.4,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:dual_handed_slash_uncross",
+        "swing_sound": {
+          "id": "bettercombat:claymore_swing"
         }
       }
     ]
