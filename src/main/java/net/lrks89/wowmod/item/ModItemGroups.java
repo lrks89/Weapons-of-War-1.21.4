@@ -14,6 +14,9 @@ public class ModItemGroups {
             .icon(() -> new ItemStack(ModItems.M13113_LONGSWORD))
             .displayName(Text.translatable("itemGroup.wowmod.weapons_of_war"))
             .entries((context, entries) -> {
+                        //TEST
+                        entries.add(ModItems.TEST);
+
                         //Slashing Weapons
                         entries.add(ModItems.M11113_DAGGER);
                         entries.add(ModItems.M11213_FANG);

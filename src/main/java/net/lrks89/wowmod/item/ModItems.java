@@ -15,6 +15,10 @@ import net.minecraft.util.Identifier;
 import java.util.function.Function;
 
 public class ModItems {
+    //TEST
+    public static final Item TEST = registerItem("test",
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -1.6f, setting));
+
     //Slashing Weapons
     public static final Item M11113_DAGGER = registerItem("11113_dagger",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -1.6f, setting));
@@ -135,6 +139,9 @@ public class ModItems {
     private static void customModIngredients(FabricItemGroupEntries entries) {
     }
     private static void customModWeapons(FabricItemGroupEntries entries) {
+        //TEST
+        entries.add(TEST);
+
         //Slashing Weapons
         entries.add(M11113_DAGGER);
         entries.add(M11213_FANG);
