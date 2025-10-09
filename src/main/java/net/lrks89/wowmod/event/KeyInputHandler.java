@@ -2,11 +2,15 @@ package net.lrks89.wowmod.event;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.lrks89.wowmod.item.ModItems;
+import net.lrks89.wowmod.payload.AltStancePayload;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
 import org.lwjgl.glfw.GLFW;
 
 public class KeyInputHandler {
@@ -17,17 +21,19 @@ public class KeyInputHandler {
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while(altStanceKey.wasPressed()) {
+            while (altStanceKey.wasPressed()) {
                 if (client.player != null) {
-                    // Get the item stack in the player's main hand
                     ItemStack mainHandStack = client.player.getMainHandStack();
-
+                    //Longsword
+                    if (mainHandStack.getItem() == ModItems.M1113A_DAGGER) {
+                        ClientPlayNetworking.send(new AltStancePayload());}
+                    if(mainHandStack.getItem() == ModItems.M1113B_DAGGER) {
+                        ClientPlayNetworking.send(new AltStancePayload());}
+                    //TEST
                     if (!mainHandStack.isEmpty()) {
-                        // Display the item's name
                         Text message = Text.of("You are holding: " + mainHandStack.getName().getString());
                         client.player.sendMessage(message, false);
                     } else {
-                        // Handle case where hand is empty
                         client.player.sendMessage(Text.of("Your hand is empty."), false);
                     }
                 }
