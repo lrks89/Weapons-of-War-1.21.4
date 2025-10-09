@@ -30,7 +30,7 @@ public class ModItems {
     //Straight Swords
     public static final Item M1213A_SHORTSWORD = registerItem("m1213a_shortsword",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
-    public static final Item M1213AB_SHORTSWORD = registerItem("m1213b_shortsword",
+    public static final Item M1213B_SHORTSWORD = registerItem("m1213b_shortsword",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
 
     public static final Item M1223A_LONGSWORD = registerItem("m1223a_longsword",
@@ -106,9 +106,9 @@ public class ModItems {
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
 
     //Reapers
-    public static final Item M2313a_SICKLE = registerItem("m2313a_sickle",
+    public static final Item M2313A_SICKLE = registerItem("m2313a_sickle",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
-    public static final Item M2313b_SICKLE = registerItem("m2313b_sickle",
+    public static final Item M2313B_SICKLE = registerItem("m2313b_sickle",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
 
     public static final Item M2323A_HOOKSWORD = registerItem("m2323a_hooksword",
@@ -164,7 +164,7 @@ public class ModItems {
     //Clubs
     public static final Item M3213A_JITTE = registerItem("m3213a_jitte",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
-    public static final Item M3213B_JITTE = registerItem("m321ba_jitte",
+    public static final Item M3213B_JITTE = registerItem("m3213b_jitte",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
 
     public static final Item M3223A_WARCLUB = registerItem("m3223a_warclub",
@@ -251,7 +251,7 @@ public class ModItems {
 
         //Straight Swords
         entries.add(M1213A_SHORTSWORD);
-        entries.add(M1213AB_SHORTSWORD);
+        entries.add(M1213B_SHORTSWORD);
 
         entries.add(M1223A_LONGSWORD);
         entries.add(M1223B_LONGSWORD);
@@ -300,8 +300,8 @@ public class ModItems {
         entries.add(M2223B_RAPIER);
 
         //Reapers
-        entries.add(M2313a_SICKLE);
-        entries.add(M2313b_SICKLE);
+        entries.add(M2313A_SICKLE);
+        entries.add(M2313B_SICKLE);
 
         entries.add(M2323A_HOOKSWORD);
         entries.add(M2323B_HOOKSWORD);

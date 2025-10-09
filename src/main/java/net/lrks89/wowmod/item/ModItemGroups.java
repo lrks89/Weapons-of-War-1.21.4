@@ -42,7 +42,7 @@ public class ModItemGroups {
                         entries.add(ModItems.M2213A_SAI);
                         entries.add(ModItems.M2223A_RAPIER);
                         //Reapers
-                        entries.add(ModItems.M2313a_SICKLE);
+                        entries.add(ModItems.M2313A_SICKLE);
                         entries.add(ModItems.M2323A_HOOKSWORD);
                         //Axes
                         entries.add(ModItems.M2413A_LABRYS);
