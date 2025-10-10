@@ -2,7 +2,7 @@
   "attributes": {
     "attack_range": 5.0,
     "two_handed": false,
-    "category": "chakram",
+    "category": "chakram_b",
     "attacks": [
       {
         "hitbox": "FORWARD_BOX",
@@ -29,7 +29,7 @@
       },
       {
         "hitbox": "HORIZONTAL_PLANE",
-        "conditions": ["DUAL_WIELDING_SAME_CATEGORY", "OFF_HAND_ONLY"],
+        "conditions": ["DUAL_WIELDING_SAME_CATEGORY", "MAIN_HAND_ONLY"],
         "damage_multiplier": 1,
         "angle": 360,
         "upswing": 0.5,

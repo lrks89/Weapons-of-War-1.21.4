@@ -1,7 +1,7 @@
 
 {
   "attributes": {
-    "range_bonus": 0,
+    "attack_range": 3,
     "category": "sword",
     "attacks": [
       {
@@ -9,7 +9,7 @@
         "damage_multiplier": 1,
         "angle": 120,
         "upswing": 0.5,
-        "animation": "bettercombat:one_handed_slash_horizontal_right",
+        "animation": "wowmod:bc_one_handed_slash_horizontal_right",
         "swing_sound": {
           "id": "bettercombat:sword_slash"
         }
@@ -19,7 +19,7 @@
         "damage_multiplier": 1,
         "angle": 120,
         "upswing": 0.5,
-        "animation": "bettercombat:one_handed_slash_horizontal_left",
+        "animation": "wowmod:bc_one_handed_slash_horizontal_left",
         "swing_sound": {
           "id": "bettercombat:sword_slash"
         }
@@ -29,7 +29,7 @@
         "damage_multiplier": 1,
         "angle": 0,
         "upswing": 0.5,
-        "animation": "bettercombat:one_handed_stab",
+        "animation": "wowmod:bc_one_handed_stab",
         "swing_sound": {
           "id": "bettercombat:sword_slash",
           "pitch": 1.2

@@ -7,482 +7,194 @@ import net.lrks89.wowmod.event.KeyInputHandler;
 import net.lrks89.wowmod.item.ModItemGroups;
 import net.lrks89.wowmod.item.ModItems;
 import net.lrks89.wowmod.payload.AltStancePayload;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class WeaponsOfWar implements ModInitializer {
-	public static final String MOD_ID = "wowmod";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
-	@Override
-	public void onInitialize() {
+public class WeaponsOfWar implements ModInitializer {
+    public static final String MOD_ID = "wowmod";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+    // Map to hold the 'A' <-> 'B' weapon relationships for easy lookup
+    private static final Map<Item, Item> ALT_STANCE_MAP = new HashMap<>();
+
+    @Override
+    public void onInitialize() {
         ModItemGroups.initialize();
         ModItems.registerModItems();
+
         KeyInputHandler.registerKeyInputs();
+        populatealtStanceMap();
 
         PayloadTypeRegistry.playC2S().register(AltStancePayload.ID, AltStancePayload.CODEC);
-
         ServerPlayNetworking.registerGlobalReceiver(AltStancePayload.ID, (payload, context) -> {
             context.server().execute(() -> {
                 var player = context.player();
                 ItemStack mainHandStack = player.getMainHandStack();
-                //Slashing Weapons
-                //Daggers
-                if (mainHandStack.getItem() == ModItems.M1113A_DAGGER) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1113B_DAGGER);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1113B_DAGGER) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1113A_DAGGER);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
 
-                if (mainHandStack.getItem() == ModItems.M1123A_FANG) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1123B_FANG);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1123B_FANG) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1123A_FANG);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
+                // Attempt to swap the weapon's stance
+                Optional<ItemStack> swappedWeapon = swapWeaponStance(mainHandStack);
 
-                //Straight Swords
-                if (mainHandStack.getItem() == ModItems.M1213A_SHORTSWORD) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1213B_SHORTSWORD);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1213B_SHORTSWORD) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1213A_SHORTSWORD);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M1223A_LONGSWORD) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1223B_LONGSWORD);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1223B_LONGSWORD) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1223A_LONGSWORD);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Curved Swords
-                if (mainHandStack.getItem() == ModItems.M1313A_CUTLASS) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1313B_CUTLASS);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1313B_CUTLASS) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1313A_CUTLASS);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M1323A_SCIMITAR) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1323B_SCIMITAR);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1323B_SCIMITAR) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1323A_SCIMITAR);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Katana
-                if (mainHandStack.getItem() == ModItems.M1413A_NINJATO) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1413B_NINJATO);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1413B_NINJATO) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1413A_NINJATO);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M1423A_UCHIGATANA) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1423B_UCHIGATANA);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1423B_UCHIGATANA) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1423A_UCHIGATANA);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Great Slashers
-                if (mainHandStack.getItem() == ModItems.M1513A_GREATSWORD) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1513B_GREATSWORD);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1513B_GREATSWORD) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1513A_GREATSWORD);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M1523A_GROSSMESSER) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1523B_GROSSMESSER);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1523B_GROSSMESSER) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1523A_GROSSMESSER);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Slashing Polearms
-                if (mainHandStack.getItem() == ModItems.M1613A_GLAIVE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1613B_GLAIVE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1613B_GLAIVE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1613A_GLAIVE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M1623A_NAGAMAKI) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1623B_NAGAMAKI);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M1623B_NAGAMAKI) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M1623A_NAGAMAKI);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Piercing Weapons
-                //Claws
-                if (mainHandStack.getItem() == ModItems.M2113A_CLAW) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2113B_CLAW);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2113B_CLAW) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2113A_CLAW);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M2123A_HATCHET) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2123B_HATCHET);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2123B_HATCHET) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2123A_HATCHET);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Thrusting Swords
-                if (mainHandStack.getItem() == ModItems.M2213A_SAI) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2213B_SAI);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2213B_SAI) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2213A_SAI);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M2223A_RAPIER) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2223B_RAPIER);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2223B_RAPIER) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2223A_RAPIER);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Reapers
-                if (mainHandStack.getItem() == ModItems.M2313A_SICKLE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2313B_SICKLE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2313B_SICKLE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2313A_SICKLE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M2323A_HOOKSWORD) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2323B_HOOKSWORD);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2323B_HOOKSWORD) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2323A_HOOKSWORD);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Axes
-                if (mainHandStack.getItem() == ModItems.M2413A_LABRYS) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2413B_LABRYS);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2413B_LABRYS) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2413A_LABRYS);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M2423A_WARAXE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2423B_WARAXE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2423B_WARAXE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2423A_WARAXE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Great Piercers
-                if (mainHandStack.getItem() == ModItems.M2513A_SCYTHE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2513B_SCYTHE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2513B_SCYTHE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2513A_SCYTHE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M2523A_BATTLEAXE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2523B_BATTLEAXE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2523B_BATTLEAXE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2523A_BATTLEAXE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Piercing Polearms
-                if (mainHandStack.getItem() == ModItems.M2613A_SPEAR) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2613B_SPEAR);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2613B_SPEAR) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2613A_SPEAR);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M2623A_HALBERD) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2623B_HALBERD);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M2623B_HALBERD) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M2623A_HALBERD);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Bludgeoning Weapons
-                //Fists
-                if (mainHandStack.getItem() == ModItems.M3113A_TONFA) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3113B_TONFA);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3113B_TONFA) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3113A_TONFA);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M3123A_GAUNTLET) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3123B_GAUNTLET);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3123B_GAUNTLET) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3123A_GAUNTLET);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Clubs
-                if (mainHandStack.getItem() == ModItems.M3213A_JITTE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3213B_JITTE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3213B_JITTE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3213A_JITTE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M3223A_WARCLUB) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3223B_WARCLUB);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3223B_WARCLUB) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3223A_WARCLUB);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Maces
-                if (mainHandStack.getItem() == ModItems.M3313A_MACE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3313B_MACE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3313B_MACE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3313A_MACE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M3323A_WARMACE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3323B_WARMACE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3323B_WARMACE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3323A_WARMACE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Hammers
-                if (mainHandStack.getItem() == ModItems.M3413A_HAMMER) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3413B_HAMMER);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3413B_HAMMER) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3413A_HAMMER);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M3423A_WARHAMMER) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3423B_WARHAMMER);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3423B_WARHAMMER) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3423A_WARHAMMER);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Great Bludgeons
-                if (mainHandStack.getItem() == ModItems.M3513A_KANABO) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3513B_KANABO);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3513B_KANABO) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3513A_KANABO);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M3523A_MAUL) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3523B_MAUL);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3523B_MAUL) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3523A_MAUL);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Bludgeoning Polearms
-                if (mainHandStack.getItem() == ModItems.M3613A_STAFF) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3613B_STAFF);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3613B_STAFF) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3613A_STAFF);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M3623A_LUCERNE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3623B_LUCERNE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M3623B_LUCERNE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M3623A_LUCERNE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                //Unique Weapons
-                //Chakrams
-                if (mainHandStack.getItem() == ModItems.M4113A_CHAKRAM) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M4113B_CHAKRAM);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M4113B_CHAKRAM) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M4113A_CHAKRAM);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-
-                //Poles
-                if (mainHandStack.getItem() == ModItems.M4213A_TWINGLAIVE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M4213B_TWINGLAIVE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M4213B_TWINGLAIVE) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M4213A_TWINGLAIVE);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
-                if (mainHandStack.getItem() == ModItems.M4223A_BO) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M4223B_BO);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-                if (mainHandStack.getItem() == ModItems.M4223B_BO) {
-                    var oldComponents = mainHandStack.getComponents();
-                    ItemStack weapon = new ItemStack(ModItems.M4223A_BO);
-                    weapon.applyComponentsFrom(oldComponents);
-                    player.setStackInHand(Hand.MAIN_HAND, weapon);}
-
+                swappedWeapon.ifPresent(weapon -> {
+                    // Replace the player's main hand item with the new stance item
+                    player.setStackInHand(Hand.MAIN_HAND, weapon);
+                });
+                // If swappedWeapon is empty, the item isn't a stance-swapping weapon, and nothing happens.
             });
         });
+    }
+    private static void populatealtStanceMap() {
+        // Slashing Weapons
+        //Daggers
+        ALT_STANCE_MAP.put(ModItems.M1113A_DAGGER, ModItems.M1113B_DAGGER);
+        ALT_STANCE_MAP.put(ModItems.M1113B_DAGGER, ModItems.M1113A_DAGGER);
+        ALT_STANCE_MAP.put(ModItems.M1123A_FANG, ModItems.M1123B_FANG);
+        ALT_STANCE_MAP.put(ModItems.M1123B_FANG, ModItems.M1123A_FANG);
+
+        // Straight Swords
+        ALT_STANCE_MAP.put(ModItems.M1213A_SHORTSWORD, ModItems.M1213B_SHORTSWORD);
+        ALT_STANCE_MAP.put(ModItems.M1213B_SHORTSWORD, ModItems.M1213A_SHORTSWORD);
+        ALT_STANCE_MAP.put(ModItems.M1223A_LONGSWORD, ModItems.M1223B_LONGSWORD);
+        ALT_STANCE_MAP.put(ModItems.M1223B_LONGSWORD, ModItems.M1223A_LONGSWORD);
+
+        // Curved Swords
+        ALT_STANCE_MAP.put(ModItems.M1313A_CUTLASS, ModItems.M1313B_CUTLASS);
+        ALT_STANCE_MAP.put(ModItems.M1313B_CUTLASS, ModItems.M1313A_CUTLASS);
+        ALT_STANCE_MAP.put(ModItems.M1323A_SCIMITAR, ModItems.M1323B_SCIMITAR);
+        ALT_STANCE_MAP.put(ModItems.M1323B_SCIMITAR, ModItems.M1323A_SCIMITAR);
+
+        // Katana
+        ALT_STANCE_MAP.put(ModItems.M1413A_NINJATO, ModItems.M1413B_NINJATO);
+        ALT_STANCE_MAP.put(ModItems.M1413B_NINJATO, ModItems.M1413A_NINJATO);
+        ALT_STANCE_MAP.put(ModItems.M1423A_UCHIGATANA, ModItems.M1423B_UCHIGATANA);
+        ALT_STANCE_MAP.put(ModItems.M1423B_UCHIGATANA, ModItems.M1423A_UCHIGATANA);
+
+        // Great Slashers
+        ALT_STANCE_MAP.put(ModItems.M1513A_GREATSWORD, ModItems.M1513B_GREATSWORD);
+        ALT_STANCE_MAP.put(ModItems.M1513B_GREATSWORD, ModItems.M1513A_GREATSWORD);
+        ALT_STANCE_MAP.put(ModItems.M1523A_GROSSMESSER, ModItems.M1523B_GROSSMESSER);
+        ALT_STANCE_MAP.put(ModItems.M1523B_GROSSMESSER, ModItems.M1523A_GROSSMESSER);
+
+        // Slashing Polearms
+        ALT_STANCE_MAP.put(ModItems.M1613A_GLAIVE, ModItems.M1613B_GLAIVE);
+        ALT_STANCE_MAP.put(ModItems.M1613B_GLAIVE, ModItems.M1613A_GLAIVE);
+        ALT_STANCE_MAP.put(ModItems.M1623A_NAGAMAKI, ModItems.M1623B_NAGAMAKI);
+        ALT_STANCE_MAP.put(ModItems.M1623B_NAGAMAKI, ModItems.M1623A_NAGAMAKI);
+
+        // Piercing Weapons
+        // Claws
+        ALT_STANCE_MAP.put(ModItems.M2113A_CLAW, ModItems.M2113B_CLAW);
+        ALT_STANCE_MAP.put(ModItems.M2113B_CLAW, ModItems.M2113A_CLAW);
+        ALT_STANCE_MAP.put(ModItems.M2123A_HATCHET, ModItems.M2123B_HATCHET);
+        ALT_STANCE_MAP.put(ModItems.M2123B_HATCHET, ModItems.M2123A_HATCHET);
+
+        // Thrusting Swords
+        ALT_STANCE_MAP.put(ModItems.M2213A_SAI, ModItems.M2213B_SAI);
+        ALT_STANCE_MAP.put(ModItems.M2213B_SAI, ModItems.M2213A_SAI);
+        ALT_STANCE_MAP.put(ModItems.M2223A_RAPIER, ModItems.M2223B_RAPIER);
+        ALT_STANCE_MAP.put(ModItems.M2223B_RAPIER, ModItems.M2223A_RAPIER);
+
+        // Reapers
+        ALT_STANCE_MAP.put(ModItems.M2313A_SICKLE, ModItems.M2313B_SICKLE);
+        ALT_STANCE_MAP.put(ModItems.M2313B_SICKLE, ModItems.M2313A_SICKLE);
+        ALT_STANCE_MAP.put(ModItems.M2323A_HOOKSWORD, ModItems.M2323B_HOOKSWORD);
+        ALT_STANCE_MAP.put(ModItems.M2323B_HOOKSWORD, ModItems.M2323A_HOOKSWORD);
+
+        // Axes
+        ALT_STANCE_MAP.put(ModItems.M2413A_LABRYS, ModItems.M2413B_LABRYS);
+        ALT_STANCE_MAP.put(ModItems.M2413B_LABRYS, ModItems.M2413A_LABRYS);
+        ALT_STANCE_MAP.put(ModItems.M2423A_WARAXE, ModItems.M2423B_WARAXE);
+        ALT_STANCE_MAP.put(ModItems.M2423B_WARAXE, ModItems.M2423A_WARAXE);
+
+        // Great Piercers
+        ALT_STANCE_MAP.put(ModItems.M2513A_SCYTHE, ModItems.M2513B_SCYTHE);
+        ALT_STANCE_MAP.put(ModItems.M2513B_SCYTHE, ModItems.M2513A_SCYTHE);
+        ALT_STANCE_MAP.put(ModItems.M2523A_BATTLEAXE, ModItems.M2523B_BATTLEAXE);
+        ALT_STANCE_MAP.put(ModItems.M2523B_BATTLEAXE, ModItems.M2523A_BATTLEAXE);
+
+        // Piercing Polearms
+        ALT_STANCE_MAP.put(ModItems.M2613A_SPEAR, ModItems.M2613B_SPEAR);
+        ALT_STANCE_MAP.put(ModItems.M2613B_SPEAR, ModItems.M2613A_SPEAR);
+        ALT_STANCE_MAP.put(ModItems.M2623A_HALBERD, ModItems.M2623B_HALBERD);
+        ALT_STANCE_MAP.put(ModItems.M2623B_HALBERD, ModItems.M2623A_HALBERD);
+
+        // Bludgeoning Weapons
+        // Fists
+        ALT_STANCE_MAP.put(ModItems.M3113A_TONFA, ModItems.M3113B_TONFA);
+        ALT_STANCE_MAP.put(ModItems.M3113B_TONFA, ModItems.M3113A_TONFA);
+        ALT_STANCE_MAP.put(ModItems.M3123A_GAUNTLET, ModItems.M3123B_GAUNTLET);
+        ALT_STANCE_MAP.put(ModItems.M3123B_GAUNTLET, ModItems.M3123A_GAUNTLET);
+
+        // Clubs
+        ALT_STANCE_MAP.put(ModItems.M3213A_JITTE, ModItems.M3213B_JITTE);
+        ALT_STANCE_MAP.put(ModItems.M3213B_JITTE, ModItems.M3213A_JITTE);
+        ALT_STANCE_MAP.put(ModItems.M3223A_WARCLUB, ModItems.M3223B_WARCLUB);
+        ALT_STANCE_MAP.put(ModItems.M3223B_WARCLUB, ModItems.M3223A_WARCLUB);
+
+        // Maces
+        ALT_STANCE_MAP.put(ModItems.M3313A_MACE, ModItems.M3313B_MACE);
+        ALT_STANCE_MAP.put(ModItems.M3313B_MACE, ModItems.M3313A_MACE);
+        ALT_STANCE_MAP.put(ModItems.M3323A_WARMACE, ModItems.M3323B_WARMACE);
+        ALT_STANCE_MAP.put(ModItems.M3323B_WARMACE, ModItems.M3323A_WARMACE);
+
+        // Hammers
+        ALT_STANCE_MAP.put(ModItems.M3413A_HAMMER, ModItems.M3413B_HAMMER);
+        ALT_STANCE_MAP.put(ModItems.M3413B_HAMMER, ModItems.M3413A_HAMMER);
+        ALT_STANCE_MAP.put(ModItems.M3423A_WARHAMMER, ModItems.M3423B_WARHAMMER);
+        ALT_STANCE_MAP.put(ModItems.M3423B_WARHAMMER, ModItems.M3423A_WARHAMMER);
+
+        // Great Bludgeons
+        ALT_STANCE_MAP.put(ModItems.M3513A_KANABO, ModItems.M3513B_KANABO);
+        ALT_STANCE_MAP.put(ModItems.M3513B_KANABO, ModItems.M3513A_KANABO);
+        ALT_STANCE_MAP.put(ModItems.M3523A_MAUL, ModItems.M3523B_MAUL);
+        ALT_STANCE_MAP.put(ModItems.M3523B_MAUL, ModItems.M3523A_MAUL);
+
+        // Bludgeoning Polearms
+        ALT_STANCE_MAP.put(ModItems.M3613A_STAFF, ModItems.M3613B_STAFF);
+        ALT_STANCE_MAP.put(ModItems.M3613B_STAFF, ModItems.M3613A_STAFF);
+        ALT_STANCE_MAP.put(ModItems.M3623A_LUCERNE, ModItems.M3623B_LUCERNE);
+        ALT_STANCE_MAP.put(ModItems.M3623B_LUCERNE, ModItems.M3623A_LUCERNE);
+
+        //Uniques Weapons
+        //Chakrams
+        ALT_STANCE_MAP.put(ModItems.M4113A_CHAKRAM, ModItems.M4113B_CHAKRAM);
+        ALT_STANCE_MAP.put(ModItems.M4113B_CHAKRAM, ModItems.M4113A_CHAKRAM);
+
+        //Poles
+        ALT_STANCE_MAP.put(ModItems.M4213A_TWINGLAIVE, ModItems.M4213B_TWINGLAIVE);
+        ALT_STANCE_MAP.put(ModItems.M4213B_TWINGLAIVE, ModItems.M4213A_TWINGLAIVE);
+        ALT_STANCE_MAP.put(ModItems.M4223A_BO, ModItems.M4223B_BO);
+        ALT_STANCE_MAP.put(ModItems.M4223B_BO, ModItems.M4223A_BO);
+    }
+
+    private Optional<ItemStack> swapWeaponStance(ItemStack originalStack) {
+        Item targetItem = ALT_STANCE_MAP.get(originalStack.getItem());
+        if (targetItem != null) {
+            // Create the new item stack
+            ItemStack newStack = new ItemStack(targetItem);
+            // Get the components from the original stack
+            var oldComponents = originalStack.getComponents();
+
+            //Component Transfers
+            var enchantments = oldComponents.get(DataComponentTypes.ENCHANTMENTS);
+            if (enchantments != null) {newStack.set(DataComponentTypes.ENCHANTMENTS, enchantments);}
+            var customName = oldComponents.get(DataComponentTypes.CUSTOM_NAME);
+            if (customName != null) {newStack.set(DataComponentTypes.CUSTOM_NAME, customName);}
+            var lore = oldComponents.get(DataComponentTypes.LORE);
+            if (lore != null) {newStack.set(DataComponentTypes.LORE, lore);}
+            var damage = oldComponents.get(DataComponentTypes.DAMAGE);
+            if (damage != null) {newStack.set(DataComponentTypes.DAMAGE, damage);}
+
+            return Optional.of(newStack);
+        }
+
+        return Optional.empty(); // No swap possible for this item
     }
 }
