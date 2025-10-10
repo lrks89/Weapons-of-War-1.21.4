@@ -1,6 +1,7 @@
 package net.lrks89.wowmod;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.lrks89.wowmod.event.KeyInputHandler;
@@ -10,20 +11,31 @@ import net.lrks89.wowmod.payload.AltStancePayload;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Unit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class WeaponsOfWar implements ModInitializer {
     public static final String MOD_ID = "wowmod";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+
     // Map to hold the 'A' <-> 'B' weapon relationships for easy lookup
     private static final Map<Item, Item> ALT_STANCE_MAP = new HashMap<>();
+
+    // Set of items that trigger the dual-wielding mechanic
+    private static final Set<Item> DUAL_WIELD_ITEMS = new HashSet<>();
+    private static final Map<UUID, ItemStack> storedOffhandItems = new HashMap<>();
+
+    // A special component/tag could be used to 'lock' the item.
+    // For simplicity, we'll use a component if available, or just rely on the detection logic.
+    // Minecraft doesn't have a built-in 'locked' component, but we can set unbreakable or a custom component.
+    // Since we're replacing the offhand every tick while the mainhand is held, no extra 'lock' is needed in this minimal implementation.
+
 
     @Override
     public void onInitialize() {
@@ -31,7 +43,10 @@ public class WeaponsOfWar implements ModInitializer {
         ModItems.registerModItems();
 
         KeyInputHandler.registerKeyInputs();
+
+
         populatealtStanceMap();
+        populateDualWieldItems(); // New method to populate dual wield items
 
         PayloadTypeRegistry.playC2S().register(AltStancePayload.ID, AltStancePayload.CODEC);
         ServerPlayNetworking.registerGlobalReceiver(AltStancePayload.ID, (payload, context) -> {
@@ -46,10 +61,22 @@ public class WeaponsOfWar implements ModInitializer {
                     // Replace the player's main hand item with the new stance item
                     player.setStackInHand(Hand.MAIN_HAND, weapon);
                 });
-                // If swappedWeapon is empty, the item isn't a stance-swapping weapon, and nothing happens.
             });
         });
+        // Register the server tick event for the dual-wield mechanic
+        ServerTickEvents.END_SERVER_TICK.register(server -> {
+            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+                handleDualWieldMechanic(player);
+
+            }
+        });
     }
+    private static void populateDualWieldItems() {
+        // Based on the 'Daggers' category in populateAltStanceMap
+        DUAL_WIELD_ITEMS.add(ModItems.M1113B_DAGGER);
+        DUAL_WIELD_ITEMS.add(ModItems.M1123B_FANG);
+    }
+
     private static void populatealtStanceMap() {
         // Slashing Weapons
         //Daggers
@@ -196,5 +223,44 @@ public class WeaponsOfWar implements ModInitializer {
         }
 
         return Optional.empty(); // No swap possible for this item
+    }
+    private void handleDualWieldMechanic(ServerPlayerEntity player) {
+        UUID playerId = player.getUuid();
+        ItemStack mainHandStack = player.getMainHandStack();
+        ItemStack offHandStack = player.getOffHandStack();
+        Item mainHandItem = mainHandStack.getItem();
+
+        boolean shouldDualWield = DUAL_WIELD_ITEMS.contains(mainHandItem) && !mainHandStack.isEmpty();
+
+        // Check if the item type matches AND has the creative slot lock set.
+        boolean isOffhandClone = offHandStack.getItem() == mainHandItem
+                && offHandStack.get(DataComponentTypes.CREATIVE_SLOT_LOCK) != null;
+
+        if (shouldDualWield) {
+            // ... (existing code for storing original offhand item)
+            if (!storedOffhandItems.containsKey(playerId)) {
+                // Store the original offhand item.
+                storedOffhandItems.put(playerId, offHandStack.copy());
+                LOGGER.info("Starting dual wield for " + player.getName().getString() + ". Storing offhand item.");
+            }
+
+            if (!isOffhandClone) {
+                ItemStack offHandClone = mainHandStack.copy();
+
+                // Set a specific non-null marker for the clone.
+                offHandClone.set(DataComponentTypes.CREATIVE_SLOT_LOCK, Unit.INSTANCE);
+                offHandClone.setCount(1);
+                player.setStackInHand(Hand.OFF_HAND, offHandClone);
+
+                LOGGER.info("Restored locked clone to offhand for " + player.getName().getString());
+            }
+        } else {
+            // ... (existing code for restoring original offhand item)
+            if (storedOffhandItems.containsKey(playerId)) {
+                ItemStack storedItem = storedOffhandItems.remove(playerId);
+                player.setStackInHand(Hand.OFF_HAND, storedItem);
+                LOGGER.info("Ending dual wield for " + player.getName().getString() + ". Restoring offhand item.");
+            }
+        }
     }
 }
