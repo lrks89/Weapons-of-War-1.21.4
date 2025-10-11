@@ -244,143 +244,104 @@ public class ModItems {
         //Slashing Weapons
         //Daggers
         entries.add(M1113A_DAGGER);
-        entries.add(M1113B_DAGGER);
 
         entries.add(M1123A_FANG);
-        entries.add(M1123B_FANG);
 
         //Straight Swords
         entries.add(M1213A_SHORTSWORD);
-        entries.add(M1213B_SHORTSWORD);
 
         entries.add(M1223A_LONGSWORD);
-        entries.add(M1223B_LONGSWORD);
 
         //Curved Swords
         entries.add(M1313A_CUTLASS);
-        entries.add(M1313B_CUTLASS);
 
         entries.add(M1323A_SCIMITAR);
-        entries.add(M1323B_SCIMITAR);
 
         //Katana
         entries.add(M1413A_NINJATO);
-        entries.add(M1413B_NINJATO);
 
         entries.add(M1423A_UCHIGATANA);
-        entries.add(M1423B_UCHIGATANA);
 
         //Great Slashers
         entries.add(M1513A_GREATSWORD);
-        entries.add(M1513B_GREATSWORD);
 
         entries.add(M1523A_GROSSMESSER);
-        entries.add(M1523B_GROSSMESSER);
 
         //Slashing Polearms
         entries.add(M1613A_GLAIVE);
-        entries.add(M1613B_GLAIVE);
 
         entries.add(M1623A_NAGAMAKI);
-        entries.add(M1623B_NAGAMAKI);
 
         //Piercing Weapons
         //Short Piercers
         entries.add(M2113A_CLAW);
-        entries.add(M2113B_CLAW);
 
         entries.add(M2123A_HATCHET);
-        entries.add(M2123B_HATCHET);
 
         //Thrusting Swords
         entries.add(M2213A_SAI);
-        entries.add(M2213B_SAI);
 
         entries.add(M2223A_RAPIER);
-        entries.add(M2223B_RAPIER);
 
         //Reapers
         entries.add(M2313A_SICKLE);
-        entries.add(M2313B_SICKLE);
 
         entries.add(M2323A_HOOKSWORD);
-        entries.add(M2323B_HOOKSWORD);
 
         //Axes
         entries.add(M2413A_LABRYS);
-        entries.add(M2413B_LABRYS);
 
         entries.add(M2423A_WARAXE);
-        entries.add(M2423B_WARAXE);
 
         //Great Piercers
         entries.add(M2513A_SCYTHE);
-        entries.add(M2513B_SCYTHE);
 
         entries.add(M2523A_BATTLEAXE);
-        entries.add(M2523B_BATTLEAXE);
 
         //Slashing Polearms
         entries.add(M2613A_SPEAR);
-        entries.add(M2613B_SPEAR);
 
         entries.add(M2623A_HALBERD);
-        entries.add(M2623B_HALBERD);
 
         //Bludgeoning Weapons
         //Fists
         entries.add(M3113A_TONFA);
-        entries.add(M3113B_TONFA);
 
         entries.add(M3123A_GAUNTLET);
-        entries.add(M3123B_GAUNTLET);
 
         //Clubs
         entries.add(M3213A_JITTE);
-        entries.add(M3213B_JITTE);
 
         entries.add(M3223A_WARCLUB);
-        entries.add(M3223B_WARCLUB);
 
         //Maces
         entries.add(M3313A_MACE);
-        entries.add(M3313B_MACE);
 
         entries.add(M3323A_WARMACE);
-        entries.add(M3323B_WARMACE);
 
         //Hammers
         entries.add(M3413A_HAMMER);
-        entries.add(M3413B_HAMMER);
 
         entries.add(M3423A_WARHAMMER);
-        entries.add(M3423B_WARHAMMER);
 
         //Great Bludgeons
         entries.add(M3513A_KANABO);
-        entries.add(M3513B_KANABO);
 
         entries.add(M3523A_MAUL);
-        entries.add(M3523B_MAUL);
 
         //Bludgeoning Polearms
         entries.add(M3613A_STAFF);
-        entries.add(M3613B_STAFF);
 
         entries.add(M3623A_LUCERNE);
-        entries.add(M3623B_LUCERNE);
 
         //Unique Weapons
         //Chakrams
         entries.add(M4113A_CHAKRAM);
-        entries.add(M4113B_CHAKRAM);
 
         //Poles
         entries.add(M4213A_TWINGLAIVE);
-        entries.add(M4213B_TWINGLAIVE);
 
         entries.add(M4223A_BO);
-        entries.add(M4223B_BO);
     }
 
     private static Item registerItem(String name, Function<Item.Settings, Item> function) {
