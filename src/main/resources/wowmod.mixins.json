@@ -3,7 +3,13 @@
 	"package": "net.lrks89.wowmod.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+        "PlayerInventoryMixin",
+        "OffhandSlotInteractionMixin",
+        "OffhandItemDropMixin",
+        "PlayerDisconnectMixin",
+        "OffhandItemPlacementMixin",
+        "DualWieldOffhandPreventSwapMixin",
+        "DualWieldOffhandClickMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -9,11 +9,10 @@ import net.lrks89.wowmod.item.ModItemGroups;
 import net.lrks89.wowmod.item.ModItems;
 import net.lrks89.wowmod.payload.AltStancePayload;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Unit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,19 +25,14 @@ public class WeaponsOfWar implements ModInitializer {
     //AltStance Mechanic (A-B Map)
     private static final Map<Item, Item> ALT_STANCE_MAP = new HashMap<>();
 
-    //Dual-wielding mechanic (Triggers)
-    private static final Set<Item> DUAL_WIELD_ITEMS = new HashSet<>();
-    private static final Map<UUID, ItemStack> storedOffhandItems = new HashMap<>();
-
     @Override
     public void onInitialize() {
         ModItemGroups.initialize();
         ModItems.registerModItems();
         KeyInputHandler.registerKeyInputs();
         populatealtStanceMap();
-        populateDualWieldItems();
 
-        //AltStance Setup
+        //AltStance Payload
         PayloadTypeRegistry.playC2S().register(AltStancePayload.ID, AltStancePayload.CODEC);
         ServerPlayNetworking.registerGlobalReceiver(AltStancePayload.ID, (payload, context) -> {
             context.server().execute(() -> {
@@ -49,12 +43,6 @@ public class WeaponsOfWar implements ModInitializer {
                     player.setStackInHand(Hand.MAIN_HAND, weapon);
                 });
             });
-        });
-        // Register the server tick event for the dual-wield mechanic
-        ServerTickEvents.END_SERVER_TICK.register(server -> {
-            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-                handleDualWieldMechanic(player);
-            }
         });
     }
     //AltStance Method
@@ -77,48 +65,7 @@ public class WeaponsOfWar implements ModInitializer {
         }
         return Optional.empty(); // No swap possible for this item
     }
-    //DualWield Method
-    private void handleDualWieldMechanic(ServerPlayerEntity player) {
-        UUID playerId = player.getUuid();
-        ItemStack mainHandStack = player.getMainHandStack();
-        ItemStack offHandStack = player.getOffHandStack();
-        Item mainHandItem = mainHandStack.getItem();
-
-        boolean shouldDualWield = DUAL_WIELD_ITEMS.contains(mainHandItem) && !mainHandStack.isEmpty();
-
-        boolean isOffhandClone = offHandStack.getItem() == mainHandItem
-                && offHandStack.get(DataComponentTypes.CREATIVE_SLOT_LOCK) != null;
-
-        if (shouldDualWield) {
-            if (!storedOffhandItems.containsKey(playerId)) {
-                storedOffhandItems.put(playerId, offHandStack.copy());
-                LOGGER.info("Starting dual wield for " + player.getName().getString() + ". Storing offhand item.");
-            }
-
-            if (!isOffhandClone) {
-                ItemStack offHandClone = mainHandStack.copy();
-                offHandClone.set(DataComponentTypes.CREATIVE_SLOT_LOCK, Unit.INSTANCE);
-                offHandClone.setCount(1);
-                player.setStackInHand(Hand.OFF_HAND, offHandClone);
-
-                LOGGER.info("Restored locked clone to offhand for " + player.getName().getString());
-            }
-        } else {
-            // ... (existing code for restoring original offhand item)
-            if (storedOffhandItems.containsKey(playerId)) {
-                ItemStack storedItem = storedOffhandItems.remove(playerId);
-                player.setStackInHand(Hand.OFF_HAND, storedItem);
-                LOGGER.info("Ending dual wield for " + player.getName().getString() + ". Restoring offhand item.");
-            }
-        }
-    }
-    //Lists
-    private static void populateDualWieldItems() {
-        // Based on the 'Daggers' category in populateAltStanceMap
-        DUAL_WIELD_ITEMS.add(ModItems.M1113B_DAGGER);
-        DUAL_WIELD_ITEMS.add(ModItems.M1123B_FANG);
-    }
-
+    //AltStance List
     private static void populatealtStanceMap() {
         // Slashing Weapons
         //Daggers
