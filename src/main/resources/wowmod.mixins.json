@@ -3,11 +3,12 @@
 	"package": "net.lrks89.wowmod.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-        "DualWieldInventoryMixin",
+        "DualWieldDuplicatePreventionMixin",
 
-        "PlayerDisconnectMixin",
-        "PlayerEntityMixin",
-        "DualWieldOffhandClickMixin"
+        "DualWieldInventoryDropMixin",
+        "DualWieldInventoryMixin",
+        "DualWieldOffhandClickMixin",
+        "PlayerEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

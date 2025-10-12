@@ -18,7 +18,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class DualWieldInventoryMixin {
 
     @Shadow public PlayerEntity player;
-    @Unique private boolean isDualWieldingActive = false;
 
     @Inject(method = "updateItems", at = @At("HEAD"))
     private void onUpdateItems(CallbackInfo info) {
@@ -26,30 +25,29 @@ public abstract class DualWieldInventoryMixin {
         ItemStack offhandStack = player.getStackInHand(Hand.OFF_HAND);
         PersistentDualWieldData data = (PersistentDualWieldData) player;
 
-        if (mainHandStack.getItem() instanceof DualWieldingSwordItem) {
-            // Check if dual-wielding is becoming active
-            if (!isDualWieldingActive) {
-                // If the player doesn't already have an off-hand item cached...
-                if (data.getOffhandCache().isEmpty()) {
-                    data.setOffhandCache(offhandStack.copy()); // Store the item to be "lost"
-                }
-                isDualWieldingActive = true;
-            }
+        boolean shouldDualWield = mainHandStack.getItem() instanceof DualWieldingSwordItem;
 
-            // Always update off-hand if a dual-wielding sword is in the main hand
+        if (shouldDualWield) {
+            // Check if dual-wielding is becoming active
+            if (!data.isDualWieldingActive()) {
+                if (data.getOffhandCache().isEmpty()) {
+                    data.setOffhandCache(offhandStack.copy());
+                }
+                data.setDualWieldingActive(true);
+            }
             player.setStackInHand(Hand.OFF_HAND, mainHandStack.copy());
 
         } else {
             // Check if dual-wielding was active and has now stopped
-            if (isDualWieldingActive) {
+            if (data.isDualWieldingActive()) {
                 ItemStack cachedItem = data.getOffhandCache();
                 if (!cachedItem.isEmpty()) {
                     player.setStackInHand(Hand.OFF_HAND, cachedItem.copy());
-                    data.setOffhandCache(ItemStack.EMPTY); // Clear the cache
+                    data.setOffhandCache(ItemStack.EMPTY);
                 } else {
                     player.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);
                 }
-                isDualWieldingActive = false;
+                data.setDualWieldingActive(false);
             }
         }
     }

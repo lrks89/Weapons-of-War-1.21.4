@@ -13,11 +13,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-//DualWield Mechanic: managed offhand cache for stored item
+//DualWield Mechanic: manages offhand cache for stored item
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin implements PersistentDualWieldData {
     @Unique
     private ItemStack offhandCache = ItemStack.EMPTY;
+
+    @Unique
+    private boolean isDualWieldingActive = false;
 
     @Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
     private void readOffhandCache(NbtCompound nbt, CallbackInfo info) {
@@ -27,7 +30,6 @@ public abstract class PlayerEntityMixin implements PersistentDualWieldData {
                     .result().ifPresent(stack -> this.offhandCache = stack);
         }
     }
-
     @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
     private void writeOffhandCache(NbtCompound nbt, CallbackInfo info) {
         if (!this.offhandCache.isEmpty()) {
@@ -37,12 +39,14 @@ public abstract class PlayerEntityMixin implements PersistentDualWieldData {
         }
     }
     @Override
-    public ItemStack getOffhandCache() {
-        return this.offhandCache;
-    }
+    public ItemStack getOffhandCache() {return this.offhandCache;}
 
     @Override
-    public void setOffhandCache(ItemStack stack) {
-        this.offhandCache = stack;
-    }
+    public void setOffhandCache(ItemStack stack) {this.offhandCache = stack;}
+
+    @Override
+    public boolean isDualWieldingActive() {return this.isDualWieldingActive;}
+
+    @Override
+    public void setDualWieldingActive(boolean active) {this.isDualWieldingActive = active;}
 }
