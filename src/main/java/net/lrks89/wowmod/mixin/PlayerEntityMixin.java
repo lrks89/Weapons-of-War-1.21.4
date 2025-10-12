@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+//DualWield Mechanic: managed offhand cache for stored item
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin implements PersistentDualWieldData {
     @Unique

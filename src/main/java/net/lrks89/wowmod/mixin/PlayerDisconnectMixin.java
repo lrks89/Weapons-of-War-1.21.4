@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+//DualWield Mechanic: Prevents cached items vanishing when disconnecting from server
 @Mixin(ServerPlayerEntity.class)
 public class PlayerDisconnectMixin {
 
