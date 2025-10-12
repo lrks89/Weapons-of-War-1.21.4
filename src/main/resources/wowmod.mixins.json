@@ -5,10 +5,7 @@
 	"mixins": [
         "PlayerInventoryMixin",
         "OffhandSlotInteractionMixin",
-        "OffhandItemDropMixin",
         "PlayerDisconnectMixin",
-        "OffhandItemPlacementMixin",
-        "DualWieldOffhandPreventSwapMixin",
         "DualWieldOffhandClickMixin"
 	],
 	"injectors": {

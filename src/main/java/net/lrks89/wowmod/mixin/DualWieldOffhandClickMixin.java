@@ -35,6 +35,17 @@ public class DualWieldOffhandClickMixin {
                     // Prevent the item from being placed
                     ci.cancel();
                 }
+
+                // Check for a quick-move action (shift-click)
+                if (actionType == net.minecraft.screen.slot.SlotActionType.QUICK_MOVE) {
+                    // Get the itemstack in the offhand slot
+                    ItemStack stackInOffhand = offhandSlot.getStack();
+                    // Check if the quick-moved item is the dual-wielding sword in the offhand
+                    if (!stackInOffhand.isEmpty() && stackInOffhand.getItem() instanceof DualWieldingSwordItem) {
+                        // Prevent the item from being shift-clicked out
+                        ci.cancel();
+                    }
+                }
             }
         }
     }
