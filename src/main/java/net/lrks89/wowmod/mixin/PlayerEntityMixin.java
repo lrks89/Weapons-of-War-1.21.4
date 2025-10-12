@@ -35,7 +35,6 @@ public abstract class PlayerEntityMixin implements PersistentDualWieldData {
                     .result().ifPresent(itemNbt -> nbt.put("offhandCache", itemNbt));
         }
     }
-
     @Override
     public ItemStack getOffhandCache() {
         return this.offhandCache;

@@ -5,7 +5,6 @@ import net.lrks89.wowmod.item.custom.DualWieldingSwordItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.Hand;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -15,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerInventory.class)
-public abstract class PlayerInventoryMixin {
+public abstract class DualWieldInventoryMixin {
 
     @Shadow public PlayerEntity player;
     @Unique private boolean isDualWieldingActive = false;
