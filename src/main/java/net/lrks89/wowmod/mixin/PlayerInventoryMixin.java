@@ -1,5 +1,6 @@
 package net.lrks89.wowmod.mixin;
 
+import net.lrks89.wowmod.interfaces.PersistentDualWieldData;
 import net.lrks89.wowmod.item.custom.DualWieldingSwordItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -17,41 +18,38 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class PlayerInventoryMixin {
 
     @Shadow public PlayerEntity player;
-    @Unique private ItemStack offhandCache = ItemStack.EMPTY;
-    @Unique private boolean hasCachedItem = false;
     @Unique private boolean isDualWieldingActive = false;
 
     @Inject(method = "updateItems", at = @At("HEAD"))
     private void onUpdateItems(CallbackInfo info) {
         ItemStack mainHandStack = player.getStackInHand(Hand.MAIN_HAND);
         ItemStack offhandStack = player.getStackInHand(Hand.OFF_HAND);
+        PersistentDualWieldData data = (PersistentDualWieldData) player;
 
         if (mainHandStack.getItem() instanceof DualWieldingSwordItem) {
-            if (!(offhandStack.getItem() instanceof DualWieldingSwordItem)) {
-                offhandCache = offhandStack.copy(); // Store the item to be "lost"
-                hasCachedItem = true;
-                player.setStackInHand(Hand.OFF_HAND, mainHandStack.copy());
-            }
-
+            // Check if dual-wielding is becoming active
             if (!isDualWieldingActive) {
+                // If the player doesn't already have an off-hand item cached...
+                if (data.getOffhandCache().isEmpty()) {
+                    data.setOffhandCache(offhandStack.copy()); // Store the item to be "lost"
+                }
                 isDualWieldingActive = true;
             }
-        } else if (isDualWieldingActive) {
-            if (hasCachedItem) {
-                player.setStackInHand(Hand.OFF_HAND, offhandCache.copy());
-                offhandCache = ItemStack.EMPTY;
-                hasCachedItem = false;
-            } else {
-                player.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);
-            }
-            isDualWieldingActive = false;
-        }
 
-        ScreenHandler currentScreenHandler = player.currentScreenHandler;
-        if (currentScreenHandler != null) {
-            ItemStack cursorStack = currentScreenHandler.getCursorStack();
-            if (cursorStack.getItem() instanceof DualWieldingSwordItem && mainHandStack.getItem() instanceof DualWieldingSwordItem) {
-                currentScreenHandler.setCursorStack(ItemStack.EMPTY);
+            // Always update off-hand if a dual-wielding sword is in the main hand
+            player.setStackInHand(Hand.OFF_HAND, mainHandStack.copy());
+
+        } else {
+            // Check if dual-wielding was active and has now stopped
+            if (isDualWieldingActive) {
+                ItemStack cachedItem = data.getOffhandCache();
+                if (!cachedItem.isEmpty()) {
+                    player.setStackInHand(Hand.OFF_HAND, cachedItem.copy());
+                    data.setOffhandCache(ItemStack.EMPTY); // Clear the cache
+                } else {
+                    player.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);
+                }
+                isDualWieldingActive = false;
             }
         }
     }

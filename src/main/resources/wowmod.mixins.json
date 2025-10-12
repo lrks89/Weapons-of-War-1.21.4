@@ -6,6 +6,7 @@
         "PlayerInventoryMixin",
         "OffhandSlotInteractionMixin",
         "PlayerDisconnectMixin",
+        "PlayerEntityMixin",
         "DualWieldOffhandClickMixin"
 	],
 	"injectors": {
