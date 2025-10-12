@@ -249,7 +249,7 @@ public class KeyInputHandler {
     }
     public static void register() {
         altStanceKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-           ALT_STANCE_KEY, InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_G, KEY_CATEGORY_WEAPON_ALT
+           ALT_STANCE_KEY, InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_R, KEY_CATEGORY_WEAPON_ALT
         ));
 
         registerKeyInputs();
