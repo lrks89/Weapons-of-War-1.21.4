@@ -1,14 +1,22 @@
 {
   "attributes": {
     "range": 2.5,
-    "category": "fist",
+    "category": "gauntlet",
     "attacks": [
       {
         "hitbox": "FORWARD_BOX",
         "upswing": 0.5,
         "animation": "wowmod:bc_one_handed_punch",
         "swing_sound": {
-          "id": "bettercombat:fist_punch"
+          "id": "bettercombat:bettercombat:fist_punch"
+        }
+      },
+      {
+        "hitbox": "FORWARD_BOX",
+        "upswing": 0.5,
+        "animation": "wowmod:bc_one_handed_punch",
+        "swing_sound": {
+          "id": "bettercombat:bettercombat:fist_punch"
         }
       }
     ]

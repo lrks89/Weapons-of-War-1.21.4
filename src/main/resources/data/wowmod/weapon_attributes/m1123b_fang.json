@@ -2,7 +2,7 @@
   "attributes": {
     "range": 2.5,
     "two_handed": false,
-    "category": "dagger",
+    "category": "fang",
     "attacks": [
       {
         "hitbox": "HORIZONTAL_PLANE",
@@ -15,29 +15,18 @@
         }
       },
       {
-        "hitbox": "VERTICAL_PLANE",
-        "damage_multiplier": 0.9,
-        "angle": 150,
-        "upswing": 0.5,
-        "animation": "wowmod:bc_two_handed_slash_vertical_left",
-        "swing_sound": {
-          "id": "bettercombat:dagger_slash"
-        }
-      },
-      {
-        "conditions": ["MAIN_HAND_ONLY"],
         "hitbox": "HORIZONTAL_PLANE",
         "damage_multiplier": 0.9,
         "angle": 150,
         "upswing": 0.5,
-        "animation": "wowmod:ss_warglaive_spin",
+        "animation": "wowmod:bc_one_handed_slash_horizontal_left",
         "swing_sound": {
           "id": "bettercombat:dagger_slash"
         }
       },
       {
         "conditions": ["DUAL_WIELDING_SAME_CATEGORY", "MAIN_HAND_ONLY"],
-        "hitbox": "HORIZONTAL_PLANE",
+        "hitbox": "FORWARD_BOX",
         "damage_multiplier": 1.4,
         "angle": 150,
         "upswing": 0.5,

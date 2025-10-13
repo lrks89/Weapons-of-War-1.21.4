@@ -5,21 +5,11 @@
     "category": "dagger",
     "attacks": [
       {
-        "hitbox": "FORWARD_BOX",
+        "hitbox": "HORIZONTAL_PLANE",
         "damage_multiplier": 0.9,
         "angle": 150,
         "upswing": 0.5,
-        "animation": "wowmod:bc_one_handed_stab",
-        "swing_sound": {
-          "id": "bettercombat:dagger_slash"
-        }
-      },
-      {
-        "hitbox": "FORWARD_BOX",
-        "damage_multiplier": 0.9,
-        "angle": 150,
-        "upswing": 0.5,
-        "animation": "wowmod:bc_two_handed_stab_left",
+        "animation": "wowmod:bc_one_handed_slash_horizontal_right",
         "swing_sound": {
           "id": "bettercombat:dagger_slash"
         }
