@@ -6,6 +6,7 @@
     "attacks": [
       {
         "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1,
         "angle": 0,
         "upswing": 0.5,
         "animation": "wowmod:ss_one_handed_chakram_throw_left",

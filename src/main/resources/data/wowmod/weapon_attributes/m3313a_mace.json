@@ -1,36 +1,38 @@
 {
   "attributes": {
     "range": 3,
+    "two_handed": false,
     "category": "mace",
     "attacks": [
       {
         "hitbox": "HORIZONTAL_PLANE",
-        "damage_multiplier": 0.8,
+        "damage_multiplier": 0.9,
         "angle": 150,
         "upswing": 0.5,
         "animation": "wowmod:bc_one_handed_slash_horizontal_right",
         "swing_sound": {
-          "id": "bettercombat:mace_slash"
+          "id": "bettercombat:axe_slash"
         }
       },
       {
         "hitbox": "HORIZONTAL_PLANE",
-        "damage_multiplier": 0.8,
+        "damage_multiplier": 0.9,
         "angle": 150,
         "upswing": 0.5,
         "animation": "wowmod:bc_one_handed_slash_horizontal_left",
         "swing_sound": {
-          "id": "bettercombat:mace_slash"
+          "id": "bettercombat:axe_slash"
         }
       },
       {
+        "conditions": ["NO_OFFHAND_ITEM"],
         "hitbox": "VERTICAL_PLANE",
         "damage_multiplier": 1.4,
         "angle": 90,
         "upswing": 0.5,
-        "animation": "wowmod:bc_one_handed_slam",
+        "animation": "wowmod:bc_two_handed_slam",
         "swing_sound": {
-          "id": "bettercombat:mace_slam"
+          "id": "bettercombat:anchor_slam"
         }
       }
     ]

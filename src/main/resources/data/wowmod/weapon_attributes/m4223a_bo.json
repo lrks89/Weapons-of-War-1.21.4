@@ -2,7 +2,7 @@
   "attributes": {
     "range": 3,
     "two_handed": true,
-    "category": "battlestaff",
+    "category": "bo",
     "attacks": [
       {
         "hitbox": "HORIZONTAL_PLANE",

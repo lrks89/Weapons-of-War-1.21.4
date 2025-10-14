@@ -19,58 +19,58 @@ public class ModItems {
     //Slashing Weapons
     //Daggers
     public static final Item M1113A_DAGGER = registerSwordItem("m1113a_dagger",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
     public static final Item M1113B_DAGGER = registerSwordItem("m1113b_dagger",
-            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -2, -1.8f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -2, -2.0f, setting));
 
     public static final Item M1123A_FANG = registerSwordItem("m1123a_fang",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, 1.8f, setting));
     public static final Item M1123B_FANG = registerSwordItem("m1123b_fang",
             setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -2, -1.8f, setting));
 
     //Straight Swords
     public static final Item M1213A_SHORTSWORD = registerSwordItem("m1213a_shortsword",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
     public static final Item M1213B_SHORTSWORD = registerSwordItem("m1213b_shortsword",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.4f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
 
     public static final Item M1223A_LONGSWORD = registerSwordItem("m1223a_longsword",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.7f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.6f, setting));
     public static final Item M1223B_LONGSWORD = registerSwordItem("m1223b_longsword",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.7f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.8f, setting));
 
     //Curved Swords
     public static final Item M1313A_CUTLASS = registerSwordItem("m1313a_cutlass",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.2f, setting));
     public static final Item M1313B_CUTLASS = registerSwordItem("m1313b_cutlass",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.2f, setting));
 
     public static final Item M1323A_SCIMITAR = registerSwordItem("m1323a_scimitar",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
     public static final Item M1323B_SCIMITAR = registerSwordItem("m1323b_scimitar",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.6f, setting));
 
     //Katana
     public static final Item M1413A_NINJATO = registerSwordItem("m1413a_ninjato",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
     public static final Item M1413B_NINJATO = registerSwordItem("m1413b_ninjato",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
 
     public static final Item M1423A_UCHIGATANA = registerSwordItem("m1423a_uchigatana",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.6f, setting));
     public static final Item M1423B_UCHIGATANA = registerSwordItem("m1423b_uchigatana",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.8f, setting));
 
     //Great Slashers
     public static final Item M1513A_GREATSWORD = registerSwordItem("m1513a_greatsword",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -3.0f, setting));
     public static final Item M1513B_GREATSWORD = registerSwordItem("m1513b_greatsword",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -3.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -3.2f, setting));
 
     public static final Item M1523A_GROSSMESSER = registerSwordItem("m1523a_grossmesser",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
     public static final Item M1523B_GROSSMESSER = registerSwordItem("m1523b_grossmesser",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -3.0f, setting));
 
     //Slashing Polearms
     public static final Item M1613A_GLAIVE = registerSwordItem("m1613a_glaive",
@@ -79,65 +79,65 @@ public class ModItems {
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
 
     public static final Item M1623A_NAGAMAKI = registerSwordItem("m1623a_nagamaki",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.8f, setting));
     public static final Item M1623B_NAGAMAKI = registerSwordItem("m1623b_nagamaki",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -3.0f, setting));
 
     //Piercing Weapons
     //Short Piercers
     public static final Item M2113A_CLAW = registerSwordItem("m2113a_claw",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -1.8f, setting));
     public static final Item M2113B_CLAW = registerSwordItem("m2113b_claw",
-            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -2, -2.2f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -1, -1.8f, setting));
 
     public static final Item M2123A_HATCHET = registerSwordItem("m2123a_hatchet",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
     public static final Item M2123B_HATCHET = registerSwordItem("m2123b_hatchet",
-            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -2, -2.2f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
 
     //Thrusting Swords
     public static final Item M2213A_SAI = registerSwordItem("m2213a_sai",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.2f, setting));
     public static final Item M2213B_SAI = registerSwordItem("m2213b_sai",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.2f, setting));
 
     public static final Item M2223A_RAPIER = registerSwordItem("m2223a_rapier",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
     public static final Item M2223B_RAPIER = registerSwordItem("m2223b_rapier",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.6f, setting));
 
     //Reapers
     public static final Item M2313A_SICKLE = registerSwordItem("m2313a_sickle",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
     public static final Item M2313B_SICKLE = registerSwordItem("m2313b_sickle",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
 
     public static final Item M2323A_HOOKSWORD = registerSwordItem("m2323a_hooksword",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.6f, setting));
     public static final Item M2323B_HOOKSWORD = registerSwordItem("m2323b_hooksword",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.6f, setting));
 
     //Axes
     public static final Item M2413A_LABRYS = registerSwordItem("m2413a_labrys",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
     public static final Item M2413B_LABRYS = registerSwordItem("m2413b_labrys",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
 
     public static final Item M2423A_WARAXE = registerSwordItem("m2423a_waraxe",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.6f, setting));
     public static final Item M2423B_WARAXE = registerSwordItem("m2423b_waraxe",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.8f, setting));
 
     //Great Piercers
     public static final Item M2513A_SCYTHE = registerSwordItem("m2513a_sythe",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
     public static final Item M2513B_SCYTHE = registerSwordItem("m2513b_sythe",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -3.0f, setting));
 
     public static final Item M2523A_BATTLEAXE = registerSwordItem("m2523a_battleaxe",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -3.0f, setting));
     public static final Item M2523B_BATTLEAXE = registerSwordItem("m2523b_battleaxe",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -3.2f, setting));
 
     //Piercing Polearms
     public static final Item M2613A_SPEAR = registerSwordItem("m2613a_spear",
@@ -146,66 +146,66 @@ public class ModItems {
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
 
     public static final Item M2623A_HALBERD = registerSwordItem("m2623a_halberd",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.8f, setting));
     public static final Item M2623B_HALBERD = registerSwordItem("m2623b_halberd",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -3.0f, setting));
 
     //Bludgeoning Weapons
     //Fists
     public static final Item M3113A_TONFA = registerSwordItem("m3113a_tonfa",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
     public static final Item M3113B_TONFA = registerSwordItem("m3113b_tonfa",
-            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -2, -1.8f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
 
     public static final Item M3123A_GAUNTLET = registerSwordItem("m3123a_gauntlet",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
     public static final Item M3123B_GAUNTLET = registerSwordItem("m3123b_gauntlet",
-            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -2, -1.8f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
 
     //Clubs
     public static final Item M3213A_JITTE = registerSwordItem("m3213a_jitte",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.2f, setting));
     public static final Item M3213B_JITTE = registerSwordItem("m3213b_jitte",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.2f, setting));
 
     public static final Item M3223A_WARCLUB = registerSwordItem("m3223a_warclub",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
     public static final Item M3223B_WARCLUB = registerSwordItem("m3223b_warclub",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.6f, setting));
 
     //Maces
     public static final Item M3313A_MACE = registerSwordItem("m3313a_mace",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
     public static final Item M3313B_MACE = registerSwordItem("m3313b_mace",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
 
     public static final Item M3323A_WARMACE = registerSwordItem("m3323a_warmace",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.6f, setting));
     public static final Item M3323B_WARMACE = registerSwordItem("m3323b_warmace",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.8f, setting));
 
     //Hammers
     public static final Item M3413A_HAMMER = registerSwordItem("m3413a_hammer",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
     public static final Item M3413B_HAMMER = registerSwordItem("m3413b_hammer",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -1, -2.0f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
 
     public static final Item M3423A_WARHAMMER = registerSwordItem("m3423a_warhammer",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.8f, setting));
     public static final Item M3423B_WARHAMMER = registerSwordItem("m3423b_warhammer",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -2.4f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 1, -3.0f, setting));
 
 
     //Great Bludgeons
     public static final Item M3513A_KANABO = registerSwordItem("m3513a_kanabo",
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
     public static final Item M3513B_KANABO = registerSwordItem("m3513b_kanabo",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -3.0f, setting));
 
     public static final Item M3523A_MAUL = registerSwordItem("m3523a_maul",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -3.0f, setting));
     public static final Item M3523B_MAUL = registerSwordItem("m3523b_maul",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -2.8f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 2, -3.2f, setting));
 
     //Bludgeoning Polearms
     public static final Item M3613A_STAFF = registerSwordItem("m3613a_staff",
@@ -214,29 +214,29 @@ public class ModItems {
             setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
 
     public static final Item M3623A_LUCERNE = registerSwordItem("m3623a_lucerne",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.8f, setting));
     public static final Item M3623B_LUCERNE = registerSwordItem("m3623b_lucerne",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -3.0f, setting));
 
 
     //Unique Weapons
     //Chakrams
     public static final Item M4113A_CHAKRAM = registerSwordItem("m4113a_chakram",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, -2, -1.6f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
     public static final Item M4113B_CHAKRAM = registerSwordItem("m4113b_chakram",
-            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, -2, -3.2f, setting));
+            setting -> new DualWieldingSwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.6f, setting));
 
 
     //Poles
     public static final Item M4213A_TWINGLAIVE = registerSwordItem("m4213a_twinglaive",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.2f, setting));
     public static final Item M4213B_TWINGLAIVE = registerSwordItem("m4213b_twinglaive",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
 
     public static final Item M4223A_BO = registerSwordItem("m4223a_bo",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.2f, setting));
     public static final Item M4223B_BO = registerSwordItem("m4223b_bo",
-            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.0f, setting));
+            setting -> new SwordItem(ModToolMaterials.IRON_WEAPONS, 0, -2.4f, setting));
 
 
     private static void customModIngredients(FabricItemGroupEntries entries) {

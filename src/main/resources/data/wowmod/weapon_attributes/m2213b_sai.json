@@ -1,3 +1,43 @@
 {
-  "parent": "bettercombat:sword"
+  "attributes": {
+    "range": 3,
+    "two_handed": false,
+    "category": "sai",
+    "attacks": [
+      {
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 0.9,
+        "angle": 0,
+        "upswing": 0.5,
+        "animation": "wowmod:bc_one_handed_stab",
+        "swing_sound": {
+          "id": "bettercombat:dagger_slash",
+          "pitch": 1.2
+        }
+      },
+      {
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 0.9,
+        "angle": 0,
+        "upswing": 0.5,
+        "animation": "wowmod:bc_one_handed_stab",
+        "swing_sound": {
+          "id": "bettercombat:dagger_slash",
+          "pitch": 1.2
+        }
+      },
+      {
+        "conditions": ["DUAL_WIELDING_SAME_CATEGORY", "MAIN_HAND_ONLY"],
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1.2,
+        "angle": 0,
+        "upswing": 0.5,
+        "animation": "wowmod:bc_dual_handed_stab",
+        "swing_sound": {
+          "id": "bettercombat:dagger_slash",
+          "pitch": 1.2
+        }
+      }
+    ]
+  }
 }

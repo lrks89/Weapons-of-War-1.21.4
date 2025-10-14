@@ -1,6 +1,6 @@
 {
   "attributes": {
-    "range_": 5,
+    "range": 5,
     "pose": "wowmod:bc_pose_two_handed_polearm",
     "two_handed": true,
     "category": "glaive",

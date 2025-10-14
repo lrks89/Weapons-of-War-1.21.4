@@ -1,6 +1,7 @@
 {
   "attributes": {
     "range": 2.5,
+    "two_handed": false,
     "category": "tonfa",
     "attacks": [
       {

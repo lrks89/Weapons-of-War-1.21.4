@@ -6,6 +6,7 @@
     "attacks": [
       {
         "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 0.8,
         "angle": 150,
         "upswing": 0.5,
         "animation": "wowmod:bc_one_handed_slash_horizontal_right",
@@ -15,6 +16,7 @@
       },
       {
         "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 0.8,
         "angle": 150,
         "upswing": 0.5,
         "animation": "wowmod:bc_one_handed_slash_horizontal_left",

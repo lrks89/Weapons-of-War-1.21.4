@@ -6,23 +6,33 @@
     "category": "halberd",
     "attacks": [
       {
-        "hitbox": "VERTICAL_PLANE",
+        "hitbox": "FORWARD_BOX",
         "damage_multiplier": 0.8,
-        "angle": 150,
+        "angle": 180,
         "upswing": 0.5,
-        "animation": "wowmod:bc_two_handed_slash_vertical_left",
+        "animation": "wowmod:bc_two_handed_stab_left",
         "swing_sound": {
-          "id": "bettercombat:glaive_slash_slow"
+          "id": "bettercombat:axe_slash"
         }
       },
       {
-        "hitbox": "FORWARD_BOX",
-        "damage_multiplier": 1.2,
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 0.8,
+        "angle": 180,
+        "upswing": 0.5,
+        "animation": "wowmod:bc_two_handed_slash_horizontal_left",
+        "swing_sound": {
+          "id": "bettercombat:axe_slash"
+        }
+      },
+      {
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 1,
         "angle": 0,
         "upswing": 0.5,
-        "animation": "wowmod:bc_two_handed_stab_right",
+        "animation": "wowmod:bc_two_handed_slam",
         "swing_sound": {
-          "id": "bettercombat:spear_stab"
+          "id": "bettercombat:axe_slash"
         }
       }
     ]

@@ -2,7 +2,7 @@
   "attributes" : {
     "range": 5,
     "two_handed": false,
-    "category": "lance",
+    "category": "spear",
     "attacks": [
       {
         "conditions": ["NOT_MOUNTED"],

@@ -6,33 +6,24 @@
     "category": "spear",
     "attacks": [
       {
-        "hitbox": "HORIZONTAL_PLANE",
-        "damage_multiplier": 0.85,
-        "angle": 180,
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1,
+        "angle": 0,
         "upswing": 0.5,
-        "animation": "wowmod:bc_two_handed_slash_horizontal_left",
+        "animation": "wowmod:bc_two_handed_stab_left",
         "swing_sound": {
-          "id": "bettercombat:axe_slash"
-        }
-      },
-      {
-        "hitbox": "HORIZONTAL_PLANE",
-        "damage_multiplier": 0.85,
-        "angle": 180,
-        "upswing": 0.5,
-        "animation": "wowmod:bc_two_handed_slash_horizontal_right",
-        "swing_sound": {
-          "id": "bettercombat:axe_slash"
+          "id": "bettercombat:spear_stab"
         }
       },
       {
         "hitbox": "FORWARD_BOX",
         "damage_multiplier": 1,
         "angle": 0,
-        "upswing": 0.5,
+        "upswing": 0.4,
         "animation": "wowmod:bc_two_handed_stab_right",
         "swing_sound": {
-          "id": "bettercombat:spear_stab"
+          "id": "bettercombat:spear_stab",
+          "pitch": 0.5
         }
       },
       {

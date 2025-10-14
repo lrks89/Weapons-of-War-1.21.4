@@ -1,10 +1,12 @@
 {
   "attributes": {
     "range": 2.5,
+    "two_handed": false,
     "category": "hatchet",
     "attacks": [
       {
         "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
         "angle": 90,
         "upswing": 0.5,
         "animation": "wowmod:bc_one_handed_slash_horizontal_right",
@@ -14,6 +16,7 @@
       },
       {
         "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
         "angle": 90,
         "upswing": 0.5,
         "animation": "wowmod:bc_one_handed_slash_horizontal_left",

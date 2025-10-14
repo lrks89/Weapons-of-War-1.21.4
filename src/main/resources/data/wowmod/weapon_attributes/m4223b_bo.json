@@ -1,3 +1,29 @@
 {
-  "parent": "bettercombat:sword"
+  "attributes": {
+    "range":4,
+    "two_handed": false,
+    "category": "bo",
+    "attacks": [
+      {
+        "conditions": ["NOT_MOUNTED"],
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 0.8,
+        "upswing": 0.5,
+        "animation": "wowmod:bc_one_handed_stab",
+        "swing_sound": {
+          "id": "bettercombat:staff_stab"
+        }
+      },
+      {
+        "conditions": ["MOUNTED"],
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 0.8,
+        "upswing": 0.5,
+        "animation": "wowmod:bc_one_handed_stab_mounted",
+        "swing_sound": {
+          "id": "bettercombat:staff_stab"
+        }
+      }
+    ]
+  }
 }
