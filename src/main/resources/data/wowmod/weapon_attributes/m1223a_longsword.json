@@ -1,7 +1,8 @@
 {
   "attributes": {
-    "range": 3,
-    "category": "sword",
+    "range": 3.5,
+    "two_handed": false,
+    "category": "longsword",
     "attacks": [
       {
         "hitbox": "HORIZONTAL_PLANE",
@@ -10,7 +11,7 @@
         "upswing": 0.5,
         "animation": "wowmod:bc_one_handed_slash_horizontal_right",
         "swing_sound": {
-          "id": "bettercombat:claymore_swing"
+          "id": "bettercombat:sword_slash"
         }
       },
       {
@@ -20,7 +21,7 @@
         "upswing": 0.5,
         "animation": "wowmod:bc_one_handed_slash_horizontal_left",
         "swing_sound": {
-          "id": "bettercombat:claymore_swing"
+          "id": "bettercombat:sword_slash"
         }
       },
       {
@@ -30,7 +31,7 @@
         "upswing": 0.5,
         "animation": "wowmod:bc_one_handed_stab",
         "swing_sound": {
-          "id": "bettercombat:claymore_stab",
+          "id": "bettercombat:sword_slash",
           "pitch": 1.2
         }
       }

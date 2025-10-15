@@ -1,3 +1,28 @@
 {
-  "parent": "bettercombat:sword"
+  "attributes": {
+    "attack_range": 3.5,
+    "two_handed": false,
+    "category": "warclub",
+    "attacks": [
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
+        "angle": 180,
+        "upswing": 0.5,
+        "animation": "wowmod:bc_one_handed_slash_horizontal_left",
+        "swing_sound": {
+          "id": "bettercombat:axe_slash"
+        }
+      },
+      {
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1,
+        "upswing": 0.5,
+        "animation": "wowmod:bc_one_handed_slam",
+        "swing_sound": {
+          "id": "bettercombat:anchor_slam"
+        }
+      }
+    ]
+  }
 }

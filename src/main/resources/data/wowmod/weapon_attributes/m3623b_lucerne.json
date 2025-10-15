@@ -1,7 +1,7 @@
 {
   "attributes": {
     "range": 5,
-    "pose": "wowmod:ss_pose_halberd",
+    "pose": "wowmod:bc_pose_two_handed_polearm",
     "two_handed": true,
     "category": "lucerne",
     "attacks": [
